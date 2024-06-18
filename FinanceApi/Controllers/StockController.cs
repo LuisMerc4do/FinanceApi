@@ -13,11 +13,11 @@ namespace FinanceApi.Controllers
     public class StockController : ControllerBase
     {
         private readonly ApplicationDBContext _context;
-        private readonly IStockRepository _stockRepo;
+        private readonly IStockRepository _stockRepository;
         public StockController(ApplicationDBContext context, IStockRepository stockRepo)
         {
             _context = context;
-            _stockRepo = stockRepo;
+            _stockRepository = stockRepo;
         }
         [HttpGet]
         [Authorize]
@@ -27,7 +27,7 @@ namespace FinanceApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var stocks = await _stockRepo.GetAllAsync(query);
+            var stocks = await _stockRepository.GetAllAsync(query);
             var stockDto = stocks.Select(s => s.ToStockDto()).ToList();
             return Ok(stockDto);
         }
@@ -38,7 +38,7 @@ namespace FinanceApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var stock = await _stockRepo.GetByIDAsync(id);
+            var stock = await _stockRepository.GetByIDAsync(id);
             if (stock == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace FinanceApi.Controllers
                 return BadRequest(ModelState);
             }
             var stockModel = stockDto.ToStockFromCreateDto();
-            await _stockRepo.CreateAsync(stockModel);
+            await _stockRepository.CreateAsync(stockModel);
             return CreatedAtAction(nameof(GetByID), new { id = stockModel.Id }, stockModel.ToStockDto());
         }
         [HttpPut]
@@ -65,7 +65,7 @@ namespace FinanceApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var stockModel = await _stockRepo.UpdateAsync(id, updateStockDto);
+            var stockModel = await _stockRepository.UpdateAsync(id, updateStockDto);
             if (stockModel == null)
             {
                 return NotFound();
@@ -81,7 +81,7 @@ namespace FinanceApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-            var stockModel = await _stockRepo.DeleteAsync(id);
+            var stockModel = await _stockRepository.DeleteAsync(id);
             if (stockModel == null)
             {
                 return NotFound();

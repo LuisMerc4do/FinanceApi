@@ -15,13 +15,16 @@ namespace FinanceApi.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IStockRepository _stockRepository;
         private readonly IPortfolioRepository _portfolioRepository;
-        public PortfolioController(UserManager<AppUser> userManager, IStockRepository stockRepository, IPortfolioRepository porfolioRepository)
+        private readonly IFMPService _fmpService;
+        public PortfolioController(IFMPService fmpService, UserManager<AppUser> userManager, IStockRepository stockRepository, IPortfolioRepository porfolioRepository)
         {
             _userManager = userManager;
             _stockRepository = stockRepository;
             _portfolioRepository = porfolioRepository;
+            _fmpService = fmpService;
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetUserPortfolio()
         {
             var username = User.GetUsername();
@@ -45,8 +48,18 @@ namespace FinanceApi.Controllers
 
             if (stock == null)
             {
-                return BadRequest("Stock not Found");
+                stock = await _fmpService.FindStockBySymbolAsync(symbol);
+                if (stock == null)
+                {
+                    return BadRequest("Stock does not exists");
+                }
+                else
+                {
+                    await _stockRepository.CreateAsync(stock);
+                }
             }
+
+            if (stock == null) return BadRequest("Stock not found");
 
             var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
             if (userPortfolio.Any(e=>e.Symbol.ToLower() == symbol.ToLower()))

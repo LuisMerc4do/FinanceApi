@@ -1,4 +1,6 @@
 ﻿using FinanceApi.Data;
+using FinanceApi.Dtos.Stock;
+using FinanceApi.Helpers;
 using FinanceApi.Interfaces;
 using FinanceApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -9,13 +11,83 @@ namespace FinanceApi.Repository
     {
         private readonly ApplicationDBContext _context;
 
-        public StockRepository(ApplicationDBContext context, IStockRepository stockRepo) 
+        public StockRepository(ApplicationDBContext context) 
         {
             _context = context;
         }
-        public async Task<List<Stock>> GetAllAsync()
+
+        public async Task<Stock> CreateAsync(Stock stockModel)
         {
-            var stocks = await _context.Stocks.ToListAsync();
+            await _context.Stocks.AddAsync(stockModel);
+            await _context.SaveChangesAsync();
+            return stockModel;
+        }
+
+        public async Task<Stock?> DeleteAsync(int id)
+        {
+            var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
+            if (stockModel != null)
+            {
+                return null;
+            }
+            _context.Stocks.Remove(stockModel);
+            await _context.SaveChangesAsync();
+            return stockModel;
+        }
+
+        public async Task<List<Stock>> GetAllAsync(QueryObject query)
+        {
+            var stocks =  _context.Stocks.Include(c => c.Comments).AsQueryable();
+            if(!string.IsNullOrWhiteSpace(query.Company))
+            {
+                stocks = stocks.Where(s => s.Company.Contains(query.Company));
+            }
+            if (!string.IsNullOrWhiteSpace(query.Symbol))
+            {
+                stocks = stocks.Where(s => s.Symbol.Contains(query.Symbol));
+            }
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if (query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s=>s.Symbol);
+                }
+                if (query.SortBy.Equals("Company", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Company) : stocks.OrderBy(s => s.Company);
+                }
+            }
+
+            var skipNumber = (query.PageNumber - 1) * query.PageSize;
+            return await stocks.Skip(skipNumber).Take(query.PageSize).ToListAsync();
+        }
+
+        public async Task<Stock?> GetByIDAsync(int id)
+        {
+           return await _context.Stocks.Include(c => c.Comments).FirstOrDefaultAsync(i => i.Id == id);
+        }
+
+        public Task<bool> StockExist(int id)
+        {
+            return _context.Stocks.AnyAsync(s=> s.Id == id);
+        }
+
+        public async Task<Stock?> UpdateAsync(int id, UpdateStockDto stockDto)
+        {
+            var stockModel = await _context.Stocks.FirstOrDefaultAsync(x =>x.Id == id);
+            if (stockModel == null)
+            {
+                return null;
+            }
+            stockModel.Symbol = stockDto.Symbol;
+            stockModel.Company = stockDto.Company;
+            stockModel.Purchase = stockDto.Purchase;
+            stockModel.LastDiv = stockDto.LastDiv;
+            stockModel.Industry = stockDto.Industry;
+            stockModel.MarketCap = stockDto.MarketCap;
+            
+            await _context.SaveChangesAsync();
+            return stockModel;
         }
     }
 }

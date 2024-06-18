@@ -17,11 +17,11 @@ namespace FinanceApi.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<Portfolio>(x => x.HasKey(p => new { p.AppUSerId, p.StockId }));
+            builder.Entity<Portfolio>(x => x.HasKey(p => new { p.AppUserId, p.StockId }));
             builder.Entity<Portfolio>()
                 .HasOne(u => u.AppUser)
                 .WithMany(u => u.Portfolios)
-                .HasForeignKey(p => p.AppUSerId);
+                .HasForeignKey(p => p.AppUserId);
 
             builder.Entity<Portfolio>()
          .HasOne(u => u.Stock)

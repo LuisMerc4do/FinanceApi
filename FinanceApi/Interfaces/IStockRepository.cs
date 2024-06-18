@@ -8,6 +8,7 @@ namespace FinanceApi.Interfaces
     {
         Task<List<Stock>> GetAllAsync(QueryObject query);
         Task<Stock?> GetByIDAsync(int id);// Can be null
+        Task<Stock?> GetBySymbolAsync(string symbol);
         Task<Stock> CreateAsync(Stock stock);
         Task<Stock?> UpdateAsync(int id, UpdateStockDto stock);
         Task<Stock?> DeleteAsync(int id);

@@ -13,19 +13,29 @@ namespace FinanceApi.Repository
             _context = context;
         }
 
-        public Task<List<Stock>> GetUserPorfolio(AppUser user)
+        public async Task<List<Stock>> GetUserPortfolio(AppUser user)
         {
-            return _context.Portfolios.Where(u => u.AppUSerId == user.Id)
-                .Select(stock => new Stock
+            return await _context.Portfolios
+                .Where(u => u.AppUserId == user.Id)
+                .Include(p => p.Stock)
+                .Select(p => new Stock
                 {
-                    Id = stock.StockId,
-                    Symbol = stock.Stock.Symbol,
-                    Company = stock.Stock.Company,
-                    Purchase = stock.Stock.Purchase,
-                    LastDiv = stock.Stock.LastDiv,
-                    Industry = stock.Stock.Industry,
-                    MarketCap = stock.Stock.MarketCap,
-                }).ToListAsync();
+                    Id = p.Stock.Id,
+                    Symbol = p.Stock.Symbol,
+                    Company = p.Stock.Company,
+                    Purchase = p.Stock.Purchase,
+                    LastDiv = p.Stock.LastDiv,
+                    Industry = p.Stock.Industry,
+                    MarketCap = p.Stock.MarketCap
+                })
+                .ToListAsync();
+        }
+
+        public async Task<Portfolio> CreateAsync(Portfolio portfolio)
+        {
+            await _context.Portfolios.AddAsync(portfolio);
+            await _context.SaveChangesAsync();
+            return portfolio;
         }
     }
 }

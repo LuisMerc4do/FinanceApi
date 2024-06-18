@@ -1,5 +1,4 @@
 ﻿using FinanceApi.Dtos.Comment;
-using FinanceApi.Dtos.Stock;
 using FinanceApi.Interfaces;
 using FinanceApi.Mappers;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +22,7 @@ namespace FinanceApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-                
+
             var comments = await _commentRepo.GetAllAsync();
             var commentDto = comments.Select(s => s.ToCommentDto());
 

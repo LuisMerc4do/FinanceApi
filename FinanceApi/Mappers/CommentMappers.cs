@@ -1,6 +1,5 @@
 ﻿using FinanceApi.Dtos.Comment;
 using FinanceApi.Models;
-using System.Runtime.CompilerServices;
 
 namespace FinanceApi.Mappers
 {

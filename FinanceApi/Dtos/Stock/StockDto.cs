@@ -1,6 +1,5 @@
 ﻿using FinanceApi.Dtos.Comment;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FinanceApi.Dtos.Stock
 {

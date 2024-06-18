@@ -11,7 +11,7 @@ namespace FinanceApi.Repository
     {
         private readonly ApplicationDBContext _context;
 
-        public StockRepository(ApplicationDBContext context) 
+        public StockRepository(ApplicationDBContext context)
         {
             _context = context;
         }
@@ -37,8 +37,8 @@ namespace FinanceApi.Repository
 
         public async Task<List<Stock>> GetAllAsync(QueryObject query)
         {
-            var stocks =  _context.Stocks.Include(c => c.Comments).AsQueryable();
-            if(!string.IsNullOrWhiteSpace(query.Company))
+            var stocks = _context.Stocks.Include(c => c.Comments).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(query.Company))
             {
                 stocks = stocks.Where(s => s.Company.Contains(query.Company));
             }
@@ -50,7 +50,7 @@ namespace FinanceApi.Repository
             {
                 if (query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
                 {
-                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s=>s.Symbol);
+                    stocks = query.IsDescending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s => s.Symbol);
                 }
                 if (query.SortBy.Equals("Company", StringComparison.OrdinalIgnoreCase))
                 {
@@ -64,17 +64,17 @@ namespace FinanceApi.Repository
 
         public async Task<Stock?> GetByIDAsync(int id)
         {
-           return await _context.Stocks.Include(c => c.Comments).FirstOrDefaultAsync(i => i.Id == id);
+            return await _context.Stocks.Include(c => c.Comments).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public Task<bool> StockExist(int id)
         {
-            return _context.Stocks.AnyAsync(s=> s.Id == id);
+            return _context.Stocks.AnyAsync(s => s.Id == id);
         }
 
         public async Task<Stock?> UpdateAsync(int id, UpdateStockDto stockDto)
         {
-            var stockModel = await _context.Stocks.FirstOrDefaultAsync(x =>x.Id == id);
+            var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
             if (stockModel == null)
             {
                 return null;
@@ -85,7 +85,7 @@ namespace FinanceApi.Repository
             stockModel.LastDiv = stockDto.LastDiv;
             stockModel.Industry = stockDto.Industry;
             stockModel.MarketCap = stockDto.MarketCap;
-            
+
             await _context.SaveChangesAsync();
             return stockModel;
         }

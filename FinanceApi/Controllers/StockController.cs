@@ -3,8 +3,8 @@ using FinanceApi.Dtos.Stock;
 using FinanceApi.Helpers;
 using FinanceApi.Interfaces;
 using FinanceApi.Mappers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace FinanceApi.Controllers
 {
@@ -20,6 +20,7 @@ namespace FinanceApi.Controllers
             _stockRepo = stockRepo;
         }
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
             if (!ModelState.IsValid)

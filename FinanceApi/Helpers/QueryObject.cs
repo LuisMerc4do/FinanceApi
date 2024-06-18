@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging.Abstractions;
-
-namespace FinanceApi.Helpers
+﻿namespace FinanceApi.Helpers
 {
     public class QueryObject
     {

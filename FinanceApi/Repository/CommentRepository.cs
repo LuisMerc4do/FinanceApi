@@ -1,6 +1,5 @@
 ﻿using FinanceApi.Data;
 using FinanceApi.Dtos.Comment;
-using FinanceApi.Dtos.Stock;
 using FinanceApi.Interfaces;
 using FinanceApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -10,9 +9,9 @@ namespace FinanceApi.Repository
     public class CommentRepository : ICommentRepository
     {
         private readonly ApplicationDBContext _context;
-        public CommentRepository(ApplicationDBContext context) 
+        public CommentRepository(ApplicationDBContext context)
         {
-            _context = context;        
+            _context = context;
         }
 
         public async Task<Comment> CreateAsync(Comment commentModel)
@@ -42,7 +41,7 @@ namespace FinanceApi.Repository
 
         public async Task<Comment?> GetByIdAsync(int id)
         {
-           return await _context.Comments.FindAsync(id);
+            return await _context.Comments.FindAsync(id);
         }
         public async Task<Comment?> UpdateAsync(int id, UpdateCommentDto commentDto)
         {

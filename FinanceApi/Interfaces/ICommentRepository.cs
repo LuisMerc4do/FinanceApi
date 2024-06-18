@@ -3,7 +3,7 @@ using FinanceApi.Models;
 
 namespace FinanceApi.Interfaces
 {
-    public interface ICommentRepository 
+    public interface ICommentRepository
     {
         Task<List<Comment>> GetAllAsync();
         Task<Comment?> GetByIdAsync(int id);

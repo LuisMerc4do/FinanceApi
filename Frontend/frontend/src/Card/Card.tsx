@@ -22,7 +22,7 @@ const Card: React.FC<Props> = ({
       <div className="card-body">
         <h2 className="card-title">{companyName}</h2>
         <p>
-          {price} ({ticker})
+          ${price} ({ticker})
         </p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">Buy Now</button>

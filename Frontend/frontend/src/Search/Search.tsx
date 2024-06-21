@@ -1,23 +1,33 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState, SyntheticEvent } from "react";
 
-type Props = {};
+interface Props {
+  onClick: (e: SyntheticEvent) => void;
+  search: string | undefined;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
 
-const Search: React.FC<Props> = (props: Props): JSX.Element => {
-  const [search, setSearch] = useState<string>("");
-  const onClick = (e: any) => {
-    setSearch(e.target.value);
-    console.log(e);
-  };
+const Search: React.FC<Props> = ({
+  onClick,
+  search,
+  handleChange,
+}: Props): JSX.Element => {
   return (
     <div>
+      <button
+        onClick={(e) => onClick(e)}
+        className="btn btn-active btn-neutral"
+      >
+        Click ME
+      </button>
       <label className="input input-bordered flex items-center gap-2">
         <input
           placeholder="Type here"
           className="input w-full max-w-xs"
-          value={search}
           type="text"
-          onChange={(e) => onClick(e)}
+          value={search}
+          onChange={(e) => handleChange(e)}
         ></input>
+
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"

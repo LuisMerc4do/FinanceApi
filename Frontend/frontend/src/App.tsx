@@ -8,6 +8,8 @@ import { CompanySearch } from "./company";
 import { searchCompanies } from "./api";
 import { ListFormat } from "typescript";
 import ListPortfolio from "./Components/Portfolio/ListPortfolio/ListPortfolio";
+import Navbar from "./Components/Navbar/Navbar";
+import Hero from "./Components/Hero/Hero";
 
 function App() {
   const [search, setSearch] = useState<string>("");
@@ -40,19 +42,32 @@ function App() {
     setPortfolioValues(updatedPortfolio);
   };
 
+  const onPortfolioDete = (e: any) => {
+    e.preventDefault();
+    const removed = portfolioValues.filter((value) => {
+      return value !== e.target[0].value;
+    });
+    setPortfolioValues(removed);
+  };
+
   return (
     <div className="App">
+      <Navbar />
+      <Hero />
       <Search
         onSearchSubmit={onSearchSubmit}
         search={search}
         handleSearchChange={handleSearchChange}
       />
-      {serverError && <h1>{serverError}</h1>}
-      <ListPortfolio portfolioValues={portfolioValues} />
+      <ListPortfolio
+        portfolioValues={portfolioValues}
+        onPortfolioDelete={onPortfolioDete}
+      />
       <CardList
         onPortfolioCreate={onPortfolioCreate}
         searchResults={searchResult}
       />
+      {serverError && <div>Unable to connect to API</div>}
     </div>
   );
 }

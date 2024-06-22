@@ -14,22 +14,26 @@ const CardList: React.FC<Props> = ({
   onPortfolioCreate,
 }: Props): JSX.Element => {
   return (
-    <div>
-      {searchResults.length > 0 ? (
-        searchResults.map((result) => {
-          return (
-            <Card
-              id={result.symbol}
-              key={uuidv4()}
-              searchResult={result}
-              onPortfolioCreate={onPortfolioCreate}
-            />
-          );
-        })
-      ) : (
-        <h1>No Result</h1>
-      )}
-    </div>
+    <>
+      <div>
+        {searchResults.length > 0 ? (
+          searchResults.map((result) => {
+            return (
+              <Card
+                id={result.symbol}
+                key={uuidv4()}
+                searchResult={result}
+                onPortfolioCreate={onPortfolioCreate}
+              />
+            );
+          })
+        ) : (
+          <h3 className="mb-3 mt-3 text-xl font-semibold text-center md:text-xl">
+            No Results!
+          </h3>
+        )}
+      </div>
+    </>
   );
 };
 

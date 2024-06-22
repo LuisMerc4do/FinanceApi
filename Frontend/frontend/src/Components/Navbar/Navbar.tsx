@@ -78,9 +78,7 @@ const Navbar = (props: Props) => {
       <div className="navbar-end p-1">
         <a className="btn btn-primary btn-xs sm:btn-sm md:btn-md">Sign Up</a>
       </div>
-      <button className="btn glass btn btn-xs sm:btn-sm md:btn-md">
-        Log In
-      </button>
+      <button className="btn glass btn-xs sm:btn-sm md:btn-md">Log In</button>
     </div>
   );
 };

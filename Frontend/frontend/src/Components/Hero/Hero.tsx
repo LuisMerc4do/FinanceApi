@@ -17,8 +17,8 @@ const Hero = (props: Props) => {
           </p>
           <div className="mx-auto lg:mx-0">
             <a
-              href=""
-              className="py-5 px-10 text-2xl font-bold text-white bg-lightGreen rounded lg:py-4 hover:opacity-70"
+              href="/search"
+              className=" btn btn-primary btn-lg sm:btn-sm md:btn-md lg:btn-lg"
             >
               Get Started
             </a>

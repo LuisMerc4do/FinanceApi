@@ -29,13 +29,13 @@ const Navbar = (props: Props) => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <a href="/search">Search</a>
             </li>
             <li>
-              <a>Parent</a>
+              <a>Account</a>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <a href="/account">Profile</a>
                 </li>
                 <li>
                   <a>Submenu 2</a>
@@ -47,19 +47,21 @@ const Navbar = (props: Props) => {
             </li>
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl ">FinanceAPP</a>
+        <a href="/" className="btn btn-ghost text-xl ">
+          FinanceAPP
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Item 1</a>
+            <a>Search</a>
           </li>
           <li>
             <details>
-              <summary>Parent</summary>
+              <summary>Account</summary>
               <ul className="p-2">
                 <li>
-                  <a>Submenu 1</a>
+                  <a>Profile</a>
                 </li>
                 <li>
                   <a>Submenu 2</a>
@@ -73,11 +75,11 @@ const Navbar = (props: Props) => {
         </ul>
       </div>
 
-      <div className="navbar-end">
-        <a className="btn btn-primary btn-xs sm:btn-sm md:btn-md">Sing Up</a>
+      <div className="navbar-end p-1">
+        <a className="btn btn-primary btn-xs sm:btn-sm md:btn-md">Sign Up</a>
       </div>
       <button className="btn glass btn btn-xs sm:btn-sm md:btn-md">
-        Glass button
+        Log In
       </button>
     </div>
   );

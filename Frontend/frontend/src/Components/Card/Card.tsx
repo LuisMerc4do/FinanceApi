@@ -14,23 +14,31 @@ const Card: React.FC<Props> = ({
   onPortfolioCreate,
 }: Props): JSX.Element => {
   return (
-    <div
-      className="flex flex-col items-center justify-between w-full p-6 bg-slate-100 squared-lg md:flex-row"
-      key={id}
-      id={id}
-    >
-      <h2 className="font-bold text-center text-veryDarkViolet md:text-left">
-        {searchResult.name} ({searchResult.symbol})
-      </h2>
-      <p className="text-veryDarkBlue">{searchResult.currency}</p>
-      <p className="font-bold text-veryDarkBlue">
-        {searchResult.exchangeShortName} - {searchResult.stockExchange}
-      </p>
-      <AddPortfolio
-        onPortfolioCreate={onPortfolioCreate}
-        symbol={searchResult.symbol}
-      />
-    </div>
+    <>
+      <th className="py-2 px-4" data-label="ID">
+        <a href={`/company/${searchResult.symbol}`}>{id}</a>
+      </th>
+      <td className="py-2 px-4" data-label="Name">
+        <a href={`/company/${searchResult.symbol}`}>{searchResult.name}</a>
+      </td>
+      <td className="py-2 px-6" data-label="Symbol">
+        <a href={`/company/${searchResult.symbol}`}>({searchResult.symbol})</a>
+      </td>
+      <td className="py-2 px-4" data-label="Currency">
+        <a href={`/company/${searchResult.symbol}`}>{searchResult.currency}</a>
+      </td>
+      <td className="py-2 px-6" data-label="Exchange">
+        <a href={`/company/${searchResult.symbol}`}>
+          {searchResult.exchangeShortName} - {searchResult.stockExchange}
+        </a>
+      </td>
+      <td className="py-2 px-4" data-label="Actions">
+        <AddPortfolio
+          onPortfolioCreate={onPortfolioCreate}
+          symbol={searchResult.symbol}
+        />
+      </td>
+    </>
   );
 };
 

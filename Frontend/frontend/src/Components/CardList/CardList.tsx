@@ -39,10 +39,7 @@ const CardList: React.FC<Props> = ({
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={6}
-                  className="py-4 text-center text-xl font-semibold"
-                >
+                <td colSpan={6} className="py-4 text-center text-xl">
                   No Results!
                 </td>
               </tr>

@@ -14,8 +14,11 @@ const Search: React.FC<Props> = ({
   return (
     <section className="relative bg-gray-100">
       <div className="max-w-4xl mx-auto p-6 space-y-6">
+        <h1 className="mb-5 text-5xl font-bold pt-3 text-center">
+          Hello there
+        </h1>
         <form
-          className="form relative flex flex-col w-full p-10 space-y-4 bg-base-200 rounded-lg md:flex-row md:space-y-0 md:space-x-3"
+          className="form relative flex flex-col w-full p-10 space-y-4 rounded-lg md:flex-row md:space-y-0 md:space-x-3"
           onSubmit={onSearchSubmit}
         >
           <input

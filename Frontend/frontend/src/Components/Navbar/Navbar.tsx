@@ -48,7 +48,7 @@ const Navbar = (props: Props) => {
           </ul>
         </div>
         <a href="/" className="btn btn-ghost text-xl ">
-          FinanceAPP
+          <img src={logo} width={150} className="mx-auto" />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">

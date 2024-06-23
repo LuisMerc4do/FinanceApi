@@ -70,7 +70,7 @@ const Navbar = (props: Props) => {
             </details>
           </li>
           <li>
-            <a>Item 3</a>
+            <a>Updates</a>
           </li>
         </ul>
       </div>

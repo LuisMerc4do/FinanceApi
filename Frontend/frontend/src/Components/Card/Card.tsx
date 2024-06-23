@@ -23,12 +23,12 @@ const Card: React.FC<Props> = ({
           {searchResult.name}
         </a>
       </td>
-      <td className="py-2 px-6" data-label="Symbol">
+      <td className="py-2 pl-20" data-label="Symbol">
         <a href={`/company/${searchResult.symbol}/company-profile`}>
           ({searchResult.symbol})
         </a>
       </td>
-      <td className="py-2 px-4" data-label="Currency">
+      <td className="py-2 pl-14" data-label="Currency">
         <a href={`/company/${searchResult.symbol}/company-profile`}>
           {searchResult.currency}
         </a>

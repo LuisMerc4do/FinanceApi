@@ -13,9 +13,9 @@ const Search: React.FC<Props> = ({
 }: Props): JSX.Element => {
   return (
     <section className="relative bg-gray-100">
-      <div className="max-w-4xl mx-auto p-6 space-y-6">
-        <h1 className="mb-5 text-5xl font-bold pt-3 text-center">
-          Hello there
+      <div className="max-w-4xl mx-auto p-10 ">
+        <h1 className="text-5xl font-bold text-center pr-10">
+          Search Companies
         </h1>
         <form
           className="form relative flex flex-col w-full p-10 space-y-4 rounded-lg md:flex-row md:space-y-0 md:space-x-3"

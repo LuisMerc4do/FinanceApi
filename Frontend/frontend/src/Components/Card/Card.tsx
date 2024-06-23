@@ -16,19 +16,25 @@ const Card: React.FC<Props> = ({
   return (
     <>
       <th className="py-2 px-4" data-label="ID">
-        <a href={`/company/${searchResult.symbol}`}>{id}</a>
+        <a href={`/company/${searchResult.symbol}/company-profile`}>{id}</a>
       </th>
       <td className="py-2 px-4" data-label="Name">
-        <a href={`/company/${searchResult.symbol}`}>{searchResult.name}</a>
+        <a href={`/company/${searchResult.symbol}/company-profile`}>
+          {searchResult.name}
+        </a>
       </td>
       <td className="py-2 px-6" data-label="Symbol">
-        <a href={`/company/${searchResult.symbol}`}>({searchResult.symbol})</a>
+        <a href={`/company/${searchResult.symbol}/company-profile`}>
+          ({searchResult.symbol})
+        </a>
       </td>
       <td className="py-2 px-4" data-label="Currency">
-        <a href={`/company/${searchResult.symbol}`}>{searchResult.currency}</a>
+        <a href={`/company/${searchResult.symbol}/company-profile`}>
+          {searchResult.currency}
+        </a>
       </td>
       <td className="py-2 px-6" data-label="Exchange">
-        <a href={`/company/${searchResult.symbol}`}>
+        <a href={`/company/${searchResult.symbol}/company-profile`}>
           {searchResult.exchangeShortName} - {searchResult.stockExchange}
         </a>
       </td>

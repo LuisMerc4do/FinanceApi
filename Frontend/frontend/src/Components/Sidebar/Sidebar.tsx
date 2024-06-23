@@ -79,6 +79,19 @@ const Sidebar = (props: Props) => {
                       <span className="badge badge-xs badge-warning"></span>
                     </Link>
                   </li>
+
+                  <li>
+                    <Link to="cashflow-statement">
+                      Cash Flow
+                      <span className="badge badge-xs badge-warning"></span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link to="balance-sheet">
+                      Balance Sheet
+                      <span className="badge badge-xs badge-warning"></span>
+                    </Link>
+                  </li>
                 </ul>
               </h6>
             </div>

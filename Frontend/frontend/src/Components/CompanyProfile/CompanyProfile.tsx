@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
 import { CompanyKeyMetrics } from "../../company";
-import { useOutletContext } from "react-router";
 import { getKeyMetrics } from "../../api";
 import RatioList from "../RatioList/RatioList";
-import Spinner from "../Spinner/Spinner";
-
 import {
   formatLargeNonMonetaryNumber,
   formatRatio,
 } from "../../Helpers/NumberFormatting";
 import StockComment from "../StockComment/StockComment";
+import Spinner from "../Spinner/Spinner";
 
 type Props = {};
 
@@ -86,18 +85,17 @@ const CompanyProfile = (props: Props) => {
   const ticker = useOutletContext<string>();
   const [companyData, setCompanyData] = useState<CompanyKeyMetrics>();
   useEffect(() => {
-    const getCompanyKeyMetrcis = async () => {
+    const getCompanyKeyRatios = async () => {
       const value = await getKeyMetrics(ticker);
       setCompanyData(value?.data[0]);
     };
-    getCompanyKeyMetrcis();
+    getCompanyKeyRatios();
   }, []);
-
   return (
     <>
       {companyData ? (
         <>
-          <RatioList data={companyData} config={tableConfig}></RatioList>
+          <RatioList config={tableConfig} data={companyData} />
           <StockComment stockSymbol={ticker} />
         </>
       ) : (

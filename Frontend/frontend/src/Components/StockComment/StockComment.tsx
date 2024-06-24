@@ -17,7 +17,7 @@ type CommentFormInputs = {
 
 const StockComment = ({ stockSymbol }: Props) => {
   const [comments, setComment] = useState<CommentGet[] | null>(null);
-  const [loading, setLoading] = useState<boolean>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getComments();
@@ -32,17 +32,23 @@ const StockComment = ({ stockSymbol }: Props) => {
         }
       })
       .catch((e) => {
-        toast.warning(e);
+        toast.warning(e.response?.data?.message || "An error occurred");
       });
   };
 
   const getComments = () => {
     setLoading(true);
-    commentGetAPI(stockSymbol).then((res) => {
-      setLoading(false);
-      setComment(res?.data!);
-    });
+    commentGetAPI(stockSymbol)
+      .then((res) => {
+        setLoading(false);
+        setComment(res?.data!);
+      })
+      .catch((e) => {
+        setLoading(false);
+        toast.warning(e.response?.data?.message || "An error occurred");
+      });
   };
+
   return (
     <div className="flex flex-col">
       {loading ? <Spinner /> : <StockCommentList comments={comments!} />}

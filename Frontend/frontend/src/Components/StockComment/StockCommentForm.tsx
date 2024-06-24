@@ -24,6 +24,7 @@ const StockCommentForm = ({ symbol, handleComment }: Props) => {
     handleSubmit,
     formState: { errors },
   } = useForm<CommentFormInputs>({ resolver: yupResolver(validation) });
+
   return (
     <form className="mt-4 ml-4" onSubmit={handleSubmit(handleComment)}>
       <input
@@ -33,7 +34,7 @@ const StockCommentForm = ({ symbol, handleComment }: Props) => {
         placeholder="Title"
         {...register("title")}
       />
-      {errors.title ? <p>{errors.title.message}</p> : ""}
+      {errors.title && <p>{errors.title.message}</p>}
       <div className="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:border-gray-200">
         <label htmlFor="comment" className="sr-only">
           Your comment
@@ -46,6 +47,7 @@ const StockCommentForm = ({ symbol, handleComment }: Props) => {
           {...register("content")}
         ></textarea>
       </div>
+      {errors.content && <p>{errors.content.message}</p>}
       <button
         type="submit"
         className="w-full px-4 py-2 text-white font-medium bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-600 rounded-lg duration-150"

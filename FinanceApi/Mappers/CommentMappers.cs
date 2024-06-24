@@ -14,10 +14,21 @@ namespace FinanceApi.Mappers
                 Content = commentModel.Content,
                 CreatedOn = commentModel.CreatedOn,
                 CreatedBy = commentModel.AppUser.UserName,
-                StockId = commentModel.StockId,
+                StockId = commentModel.StockId
             };
         }
+
         public static Comment ToCommentFromCreate(this CreateCommentDto commentDto, int stockId)
+        {
+            return new Comment
+            {
+                Title = commentDto.Title,
+                Content = commentDto.Content,
+                StockId = stockId
+            };
+        }
+
+        public static Comment ToCommentFromUpdate(this UpdateCommentDto commentDto, int stockId)
         {
             return new Comment
             {

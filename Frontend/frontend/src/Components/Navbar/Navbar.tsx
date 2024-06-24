@@ -1,10 +1,12 @@
 import React from "react";
 import logo from "./logo.png";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../Context/useAuth";
 
 interface Props {}
 
 const Navbar = (props: Props) => {
+  const { isLoggedIn, user, logout } = useAuth();
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -84,14 +86,39 @@ const Navbar = (props: Props) => {
         </ul>
       </div>
 
-      <div className="navbar-end p-1">
-        <Link to="/signup">
-          <a className="btn btn-primary btn-xs sm:btn-sm md:btn-md">Sign Up</a>
-        </Link>
-      </div>
-      <Link to="/login">
-        <button className="btn glass btn-xs sm:btn-sm md:btn-md">Log In</button>
-      </Link>
+      {isLoggedIn() ? (
+        <>
+          <div className="navbar-end p-1">
+            <Link to="/">
+              <div className="avatar online placeholder">
+                <div className="bg-neutral text-neutral-content w-10 rounded-full">
+                  <span className="text-xl">{user?.userName.charAt(0)}</span>
+                </div>
+              </div>
+            </Link>
+          </div>
+          <a onClick={logout}>
+            <button className="btn glass btn-xs sm:btn-sm md:btn-md">
+              Logout
+            </button>
+          </a>
+        </>
+      ) : (
+        <>
+          <div className="navbar-end p-1">
+            <Link to="/signup">
+              <a className="btn btn-primary btn-xs sm:btn-sm md:btn-md">
+                Sign Up
+              </a>
+            </Link>
+          </div>
+          <Link to="/login">
+            <button className="btn glass btn-xs sm:btn-sm md:btn-md">
+              Log In
+            </button>
+          </Link>
+        </>
+      )}
     </div>
   );
 };

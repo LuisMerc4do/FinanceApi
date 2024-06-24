@@ -51,7 +51,11 @@ const Navbar = (props: Props) => {
           </ul>
         </div>
         <a href="/" className="btn btn-ghost text-xl ">
-          <img src={logo} width={150} className="mx-auto" />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Yahoo%21_Finance_logo_2021.png/1200px-Yahoo%21_Finance_logo_2021.png"
+            width={150}
+            className="mx-auto"
+          />
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">

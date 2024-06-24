@@ -31,7 +31,7 @@ function LoginPage({}: Props) {
       <div className="max-w-sm w-full text-gray-600 space-y-5">
         <div className="text-center pb-8">
           <img
-            src="https://cdn.shopify.com/app-store/listing_images/509bcbf13a51fcb96171996095a4a723/promotional_image/CPS6wLunxIMDEAE=.png?height=900&width=1600"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Yahoo%21_Finance_logo_2021.png/1200px-Yahoo%21_Finance_logo_2021.png"
             width={150}
             className="mx-auto"
           />

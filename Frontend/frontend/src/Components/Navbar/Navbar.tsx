@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "./logo.png";
+import { Link } from "react-router-dom";
 
 interface Props {}
 
@@ -29,7 +30,9 @@ const Navbar = (props: Props) => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a href="/search">Search</a>
+              <Link to="/search">
+                <a href="/search">Search</a>
+              </Link>
             </li>
             <li>
               <a>Account</a>
@@ -54,7 +57,9 @@ const Navbar = (props: Props) => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <a>Search</a>
+            <Link to="/search">
+              <a>Search</a>
+            </Link>
           </li>
           <li>
             <details>
@@ -76,9 +81,13 @@ const Navbar = (props: Props) => {
       </div>
 
       <div className="navbar-end p-1">
-        <a className="btn btn-primary btn-xs sm:btn-sm md:btn-md">Sign Up</a>
+        <Link to="/signup">
+          <a className="btn btn-primary btn-xs sm:btn-sm md:btn-md">Sign Up</a>
+        </Link>
       </div>
-      <button className="btn glass btn-xs sm:btn-sm md:btn-md">Log In</button>
+      <Link to="/login">
+        <button className="btn glass btn-xs sm:btn-sm md:btn-md">Log In</button>
+      </Link>
     </div>
   );
 };

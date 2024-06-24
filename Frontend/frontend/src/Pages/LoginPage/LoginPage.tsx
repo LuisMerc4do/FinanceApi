@@ -1,8 +1,9 @@
 import React from "react";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useAuth } from "../../Context/userAuth";
+import { useAuth } from "../../Context/useAuth";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 type Props = {};
 
 type LoginFormsInput = {
@@ -122,12 +123,14 @@ function LoginPage({}: Props) {
         </button>
         <p className="text-center">
           Don't have an account?{" "}
-          <a
-            href="javascript:void(0)"
-            className="font-medium text-indigo-600 hover:text-indigo-500"
-          >
-            Sign up
-          </a>
+          <Link to="/signup">
+            <a
+              href="javascript:void(0)"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
+              Sign up
+            </a>
+          </Link>
         </p>
       </div>
     </main>

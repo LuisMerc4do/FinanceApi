@@ -1,10 +1,10 @@
 import { createContext, useEffect, useState } from "react";
+import { UserProfile } from "../Models/User";
 import { useNavigate } from "react-router-dom";
 import { loginAPI, registerAPI } from "../Services/AuthService";
 import { toast } from "react-toastify";
 import React from "react";
 import axios from "axios";
-import { UserProfile } from "../Models/User";
 
 type UserContextType = {
   user: UserProfile | null;

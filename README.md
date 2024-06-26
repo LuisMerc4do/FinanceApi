@@ -1,6 +1,6 @@
 # FinanceApi
 
-A modern, responsive finance application that allows users to search stocks using https://site.financialmodelingprep.com/ API, storing the stock viewed in the API inside the database when added to portfolio or comment, view stock information, , post comments, dynamically create new stocks, user creation, login, Authorization.
+A modern, responsive finance application that allows users to search stocks using https://site.financialmodelingprep.com/ API, storing the stock viewed in the API inside the database when added to portfolio or comment, view stock information directly from the API, company profile, post comments, dynamically create new stocks, user creation, login, Authorization.
 
 ## Overview
 

@@ -16,23 +16,23 @@ type CommentFormInputs = {
 };
 
 const StockComment = ({ stockSymbol }: Props) => {
-  const [comments, setComment] = useState<CommentGet[] | null>(null);
+  const [comments, setComments] = useState<CommentGet[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getComments();
   }, []);
 
-  const handleComment = (e: CommentFormInputs) => {
-    commentPostAPI(e.title, e.content, stockSymbol)
+  const handleComment = (formData: CommentFormInputs) => {
+    commentPostAPI(formData.title, formData.content, stockSymbol)
       .then((res) => {
         if (res) {
           toast.success("Comment created successfully!");
           getComments();
         }
       })
-      .catch((e) => {
-        toast.warning(e.response?.data?.message || "An error occurred");
+      .catch((error) => {
+        toast.warning(error.response?.data?.message || "An error occurred");
       });
   };
 
@@ -41,17 +41,17 @@ const StockComment = ({ stockSymbol }: Props) => {
     commentGetAPI(stockSymbol)
       .then((res) => {
         setLoading(false);
-        setComment(res?.data!);
+        setComments(res);
       })
-      .catch((e) => {
+      .catch((error) => {
         setLoading(false);
-        toast.warning(e.response?.data?.message || "An error occurred");
+        toast.warning(error.response?.data?.message || "An error occurred");
       });
   };
 
   return (
     <div className="flex flex-col">
-      {loading ? <Spinner /> : <StockCommentList comments={comments!} />}
+      {loading ? <Spinner /> : <StockCommentList comments={comments || []} />}
       <StockCommentForm symbol={stockSymbol} handleComment={handleComment} />
     </div>
   );

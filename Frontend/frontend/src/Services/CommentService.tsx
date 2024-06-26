@@ -8,23 +8,23 @@ export const commentPostAPI = async (
   title: string,
   content: string,
   symbol: string
-) => {
+): Promise<CommentPost> => {
   try {
-    const data = await axios.post<CommentPost>(`${api}${symbol}`, {
+    const response = await axios.post<CommentPost>(`${api}${symbol}`, {
       title: title,
       content: content,
     });
-    return data;
+    return response.data;
   } catch (error) {
     handleError(error);
     throw error;
   }
 };
 
-export const commentGetAPI = async (symbol: string) => {
+export const commentGetAPI = async (symbol: string): Promise<CommentGet[]> => {
   try {
-    const data = await axios.get<CommentGet[]>(`${api}?Symbol=${symbol}`);
-    return data;
+    const response = await axios.get<CommentGet[]>(`${api}?symbol=${symbol}`);
+    return response.data;
   } catch (error) {
     handleError(error);
     throw error;

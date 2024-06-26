@@ -38,15 +38,16 @@ namespace FinanceApi.Repository
         public async Task<List<Comment>> GetAllAsync(CommentQueryObject queryObject)
         {
             var comments = _context.Comments.Include(a => a.AppUser).AsQueryable();
-                if(!string.IsNullOrWhiteSpace(queryObject.Symbol))
+            if (!string.IsNullOrWhiteSpace(queryObject.Symbol))
             {
                 comments = comments.Where(s => s.Stock.Symbol == queryObject.Symbol);
             };
-            if (queryObject.isDescending == true) {
+            if (queryObject.isDescending == true)
+            {
                 comments = comments.OrderByDescending(c => c.CreatedOn);
             }
 
-                return await comments.ToListAsync();
+            return await comments.ToListAsync();
         }
 
         public async Task<Comment?> GetByIdAsync(int id)

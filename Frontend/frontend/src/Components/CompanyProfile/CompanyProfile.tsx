@@ -95,8 +95,10 @@ const CompanyProfile = (props: Props) => {
     <>
       {companyData ? (
         <>
-          <RatioList config={tableConfig} data={companyData} />
-          <StockComment stockSymbol={ticker} />
+          <div className="rounded-sm border border-stroke bg-white  shadow-default dark:border-strokedark dark:bg-boxdark  xl:pb-1">
+            <RatioList config={tableConfig} data={companyData} />
+            <StockComment stockSymbol={ticker} />
+          </div>
         </>
       ) : (
         <Spinner />

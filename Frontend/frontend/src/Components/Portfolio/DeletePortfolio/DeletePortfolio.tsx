@@ -10,7 +10,7 @@ const DeletePortfolio = ({ onPortfolioDelete, portfolioValue }: Props) => {
     <div>
       <form onSubmit={onPortfolioDelete}>
         <input hidden={true} value={portfolioValue}></input>
-        <button className="btn btn-square">
+        <button className="inline-flex items-center justify-center bg-primary py-4 px-10 text-center font-medium text-white hover:bg-opacity-90 lg:px-2 xl:px-4 ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6"

@@ -1,5 +1,4 @@
 import React, { useState, ChangeEvent, SyntheticEvent, useEffect } from "react";
-import Navbar from "../../Components/Navbar/Navbar";
 import { CompanySearch } from "../../company";
 import { searchCompanies } from "../../api";
 import Search from "../../Components/Search/Search";
@@ -12,6 +11,7 @@ import {
   portfolioGetAPI,
 } from "../../Services/PortfolioService";
 import { toast } from "react-toastify";
+import ChartOne from "../../Components/RatioList/ChartOne";
 
 interface Props {}
 
@@ -79,20 +79,31 @@ const SearchPage = (props: Props) => {
   };
   return (
     <>
-      <Search
-        onSearchSubmit={onSearchSubmit}
-        search={search}
-        handleSearchChange={handleSearchChange}
-      />
-      <ListPortfolio
-        portfolioValues={portfolioValues!}
-        onPortfolioDelete={onPortfolioDelete}
-      />
-      <CardList
-        searchResults={searchResult}
-        onPortfolioCreate={onPortfolioCreate}
-      />
-      {serverError && <div>Unable to connect to API</div>}
+      <div className=" m-container mx-auto px-4 md:px-6 lg:px-8 mt-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="col-span-1">
+            <ListPortfolio
+              portfolioValues={portfolioValues!}
+              onPortfolioDelete={onPortfolioDelete}
+            />
+          </div>
+          <div className="col-span-2 pb-6">
+            <ChartOne />
+          </div>
+        </div>
+
+        <Search
+          onSearchSubmit={onSearchSubmit}
+          search={search}
+          handleSearchChange={handleSearchChange}
+        />
+        <CardList
+          searchResults={searchResult}
+          onPortfolioCreate={onPortfolioCreate}
+        />
+
+        {serverError && <div>Unable to connect to API</div>}
+      </div>
     </>
   );
 };

@@ -15,35 +15,35 @@ const Card: React.FC<Props> = ({
 }: Props): JSX.Element => {
   return (
     <>
-      <th className="py-2 px-4" data-label="ID">
-        <a href={`/company/${searchResult.symbol}/company-profile`}>{id}</a>
-      </th>
-      <td className="py-2 px-4" data-label="Name">
+      <div className="flex items-center gap-3 p-2.5 xl:p-5">
         <a href={`/company/${searchResult.symbol}/company-profile`}>
           {searchResult.name}
         </a>
-      </td>
-      <td className="py-2 pl-20" data-label="Symbol">
+      </div>
+
+      <div className="flex items-center justify-center p-2.5 xl:p-5">
         <a href={`/company/${searchResult.symbol}/company-profile`}>
           ({searchResult.symbol})
         </a>
-      </td>
-      <td className="py-2 pl-14" data-label="Currency">
-        <a href={`/company/${searchResult.symbol}/company-profile`}>
+      </div>
+
+      <div className="flex items-center justify-center p-2.5 xl:p-5">
+        <a href={`/company/${searchResult.currency}/company-profile`}>
           {searchResult.currency}
         </a>
-      </td>
-      <td className="py-2 px-6" data-label="Exchange">
-        <a href={`/company/${searchResult.symbol}/company-profile`}>
-          {searchResult.exchangeShortName} - {searchResult.stockExchange}
+      </div>
+      <div className="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+        <a href={`/company/${searchResult.exchangeShortName}/company-profile`}>
+          {searchResult.exchangeShortName}
         </a>
-      </td>
-      <td className="py-2 px-4" data-label="Actions">
+      </div>
+
+      <div className="" data-label="Actions">
         <AddPortfolio
           onPortfolioCreate={onPortfolioCreate}
           symbol={searchResult.symbol}
         />
-      </td>
+      </div>
     </>
   );
 };

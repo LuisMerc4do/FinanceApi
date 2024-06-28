@@ -14,38 +14,52 @@ const CardList: React.FC<Props> = ({
 }: Props): JSX.Element => {
   return (
     <>
-      <div className="overflow-x-auto">
-        <table className="min-w-full bg-white">
-          <thead>
-            <tr>
-              <th className="py-2 px-4 border-b">ID</th>
-              <th className="py-2 px-4 border-b">Name</th>
-              <th className="py-2 px-4 border-b">Symbol</th>
-              <th className="py-2 px-1 border-b">Currency</th>
-              <th className="py-2 px-4 border-b">Exchange</th>
-              <th className="py-2 px-4 border-b">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {searchResults.length > 0 ? (
-              searchResults.map((result) => (
-                <tr key={uuidv4()} className="hover:bg-gray-100">
-                  <Card
-                    id={result.symbol}
-                    searchResult={result}
-                    onPortfolioCreate={onPortfolioCreate}
-                  />
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td colSpan={6} className="py-4 text-center text-xl">
-                  No Results!
-                </td>
+      <div className="flex flex-col rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
+        <div className="grid grid-cols-2 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+          <div className="p-2.5 xl:p-5">
+            <h5 className="text-sm font-medium uppercase xsm:text-base">ID</h5>
+          </div>
+          <div className="p-2.5 text-center xl:p-5">
+            <h5 className="text-sm font-medium uppercase xsm:text-base">
+              Name
+            </h5>
+          </div>
+          <div className="p-2.5 text-center xl:p-5">
+            <h5 className="text-sm font-medium uppercase xsm:text-base">
+              Symbol
+            </h5>
+          </div>
+          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+            <h5 className="text-sm font-medium uppercase xsm:text-base">
+              Currency
+            </h5>
+          </div>
+          <div className="hidden p-2.5 text-center sm:block xl:p-5">
+            <h5 className="text-sm font-medium uppercase xsm:text-base">
+              Action
+            </h5>
+          </div>
+        </div>
+        <tbody>
+          {searchResults.length > 0 ? (
+            searchResults.map((result) => (
+              <tr
+                key={uuidv4()}
+                className="grid grid-cols-3 sm:grid-cols-5 border-b border-stroke dark:border-strokedark "
+              >
+                <Card
+                  id={result.symbol}
+                  searchResult={result}
+                  onPortfolioCreate={onPortfolioCreate}
+                />
               </tr>
-            )}
-          </tbody>
-        </table>
+            ))
+          ) : (
+            <td colSpan={6} className=" hidden py-4 text-center text-xl">
+              No Results!
+            </td>
+          )}
+        </tbody>
       </div>
     </>
   );

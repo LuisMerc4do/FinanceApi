@@ -13,7 +13,7 @@ const ListPortfolio: React.FC<ListPortfolioProps> = ({
 }) => {
   return (
     <div className="object-top md:grid-cols-1">
-      <div className="col-span-1 rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
+      <div className="col-span-1 rounded-sm border mb-6 border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4">
         <h4 className="py-5 b-6 text-xl font-bold text-black dark:text-white pl-7">
           My Portfolio
         </h4>

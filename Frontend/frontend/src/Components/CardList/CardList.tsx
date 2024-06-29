@@ -14,35 +14,37 @@ const CardList: React.FC<Props> = ({
 }: Props): JSX.Element => {
   return (
     <>
-      <div className="flex flex-col rounded-sm border border-stroke bg-white px-5 pt-6 pb-2.5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
-        <div className="grid grid-cols-2 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
-          <div className="p-2.5 xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">ID</h5>
+      {searchResults.length > 0 ? (
+        <div className="flex flex-col rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+          <div className="grid grid-cols-2 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+            <div className="p-2.5 xl:p-5">
+              <h5 className="text-sm font-medium uppercase xsm:text-base">
+                ID
+              </h5>
+            </div>
+            <div className="p-2.5 text-center xl:p-5">
+              <h5 className="text-sm font-medium uppercase xsm:text-base">
+                Name
+              </h5>
+            </div>
+            <div className="p-2.5 text-center xl:p-5">
+              <h5 className="text-sm font-medium uppercase xsm:text-base">
+                Symbol
+              </h5>
+            </div>
+            <div className="hidden p-2.5 text-center sm:block xl:p-5">
+              <h5 className="text-sm font-medium uppercase xsm:text-base">
+                Currency
+              </h5>
+            </div>
+            <div className="hidden p-2.5 text-center sm:block xl:p-5">
+              <h5 className="text-sm font-medium uppercase xsm:text-base">
+                Action
+              </h5>
+            </div>
           </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Name
-            </h5>
-          </div>
-          <div className="p-2.5 text-center xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Symbol
-            </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Currency
-            </h5>
-          </div>
-          <div className="hidden p-2.5 text-center sm:block xl:p-5">
-            <h5 className="text-sm font-medium uppercase xsm:text-base">
-              Action
-            </h5>
-          </div>
-        </div>
-        <tbody>
-          {searchResults.length > 0 ? (
-            searchResults.map((result) => (
+          <tbody>
+            {searchResults.map((result) => (
               <tr
                 key={uuidv4()}
                 className="grid grid-cols-3 sm:grid-cols-5 border-b border-stroke dark:border-strokedark "
@@ -53,14 +55,12 @@ const CardList: React.FC<Props> = ({
                   onPortfolioCreate={onPortfolioCreate}
                 />
               </tr>
-            ))
-          ) : (
-            <td colSpan={6} className=" hidden py-4 text-center text-xl">
-              No Results!
-            </td>
-          )}
-        </tbody>
-      </div>
+            ))}
+          </tbody>
+        </div>
+      ) : (
+        <div className="hidden py-4 text-center text-xl">No Results!</div>
+      )}
     </>
   );
 };

@@ -24,9 +24,11 @@ const Table = ({ config, data }: Props) => {
     );
   });
   return (
-    <div className="rounded-sm border font-normal mb-6 border-stroke bg-white px-5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-6">
-      <table className="min-w-full divide-y divide-gray-200 m-5">
-        <thead className="bg-gray-50">{renderedHeaders}</thead>
+    <div className="rounded-sm border font-normal  border-stroke px-5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-6">
+      <table className="min-w-full mr-5  ">
+        <thead className="rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-2 font-bold">
+          {renderedHeaders}
+        </thead>
         <tbody>{renderedRows}</tbody>
       </table>
     </div>

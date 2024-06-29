@@ -185,7 +185,7 @@ const CompanySidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    d="M12 4h2a2 2 0 012 2v1h2.5a2.5 2.5 0 012.5 2.5v10a2.5 2.5 0 01-2.5 2.5H5.5A2.5 2.5 0 013 19.5v-10A2.5 2.5 0 015.5 7H8V6a2 2 0 012-2h2zM12 2a2 2 0 00-2 2v1h4V4a2 2 0 00-2-2z"
                   />
                 </svg>
                 Company Profile
@@ -194,7 +194,7 @@ const CompanySidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
 
               {/* <!-- Menu Item Settings --> */}
               <Link
-                to={`/company/${ticker}/cashflow-statement`}
+                to={`/company/${ticker}/income-statement`}
                 className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-300 dark:hover:bg-meta-4"
               >
                 <svg
@@ -208,10 +208,10 @@ const CompanySidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    d="M9 19V5m6 14V9m-3 10v-7"
                   />
                 </svg>
-                Cash Flow Statements
+                Income Statement
               </Link>
               {/* <!-- Menu Item Settings --> */}
 
@@ -230,13 +230,13 @@ const CompanySidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    d="M4 6h16M4 10h16M4 14h16M4 18h16"
                   />
                 </svg>
                 Balance Sheet
               </Link>
               <Link
-                to={`/company/${ticker}/income-statement`}
+                to={`/company/${ticker}/cashflow-statement`}
                 className="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium dark:text-bodydark1 duration-300 ease-in-out hover:bg-slate-300 dark:hover:bg-meta-4"
               >
                 <svg
@@ -250,10 +250,10 @@ const CompanySidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth="2"
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0 0h3m-3 0h-3m3 0a9 9 0 010-18 9 9 0 110 18z"
                   />
                 </svg>
-                Income Statements
+                Cashflow Statement
               </Link>
             </ul>
           </div>

@@ -8,10 +8,13 @@ interface Props {
 
 const CompanyDashboard = ({ children, ticker }: Props) => {
   return (
-    <div className=" px-5 pt-6 dark:border-strokedark sm:px-7.5 xl:pb-1 ">
+    <div className="col-span-1shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-4 mx-6 mt-6">
       <div>
         <div>{children}</div>
-        <div>{<Outlet context={ticker} />}</div>
+
+        <div className="bg-white  rounded-sm border border-stroke mb-4">
+          {<Outlet context={ticker} />}
+        </div>
       </div>
     </div>
   );

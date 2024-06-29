@@ -8,7 +8,7 @@ interface Props {
 
 const CompanyDashboard = ({ children, ticker }: Props) => {
   return (
-    <div className="bg-white px-5 pt-6 dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1 ">
+    <div className=" px-5 pt-6 dark:border-strokedark sm:px-7.5 xl:pb-1 ">
       <div>
         <div>{children}</div>
         <div>{<Outlet context={ticker} />}</div>

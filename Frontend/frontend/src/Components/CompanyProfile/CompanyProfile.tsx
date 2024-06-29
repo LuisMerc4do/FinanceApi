@@ -96,8 +96,12 @@ const CompanyProfile = (props: Props) => {
       {companyData ? (
         <>
           <div className="rounded-sm border border-stroke bg-white  shadow-default dark:border-strokedark dark:bg-boxdark  xl:pb-1">
-            <RatioList config={tableConfig} data={companyData} />
-            <StockComment stockSymbol={ticker} />
+            <div className="flex flex-wrap">
+              <RatioList config={tableConfig} data={companyData} />
+            </div>
+            <div className="flex flex-wrap">
+              <StockComment stockSymbol={ticker} />
+            </div>
           </div>
         </>
       ) : (

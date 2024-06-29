@@ -28,7 +28,7 @@ const CardPortfolio = ({ portfolioValue, onPortfolioDelete }: Props) => {
         </div>
 
         <div className="text-right">
-          <Link to={`/company/${portfolioValue.comments}/company-profile`}>
+          <Link to={`/company/${portfolioValue.symbol}/company-profile`}>
             <a className="mb-1 text-lg font-medium text-black dark:text-white">
               $ {portfolioValue.purchase}
             </a>

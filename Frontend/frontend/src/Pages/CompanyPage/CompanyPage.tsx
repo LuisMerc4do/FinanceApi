@@ -6,6 +6,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import CompanyDashboard from "../../Components/CompanyDashboard/CompanyDashboard";
 import Tile from "../../Components/Tile/Tile";
 import Spinner from "../../Components/Spinner/Spinner";
+import ChartOne from "../../Components/RatioList/ChartOne";
 
 interface Props {}
 
@@ -36,6 +37,9 @@ const CompanyPage = (props: Props) => {
             <TenKFinder ticker={company.symbol} />*/}
             <div className="rounded-sm border font-normal mb-6 border-stroke bg-white px-5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-6">
               <a className=" pb-6">{company.description}</a>
+            </div>
+            <div className="mb-10">
+              <ChartOne />
             </div>
           </CompanyDashboard>
         </main>

@@ -3,7 +3,7 @@ import DarkModeSwitcher from "./DarkModeSwitcher";
 import DropdownNotification from "./DropDownNotification";
 import DropdownMessage from "./DropDownMessage";
 import DropdownUser from "./DropDownUser";
-import logo from "../Images/logo.png";
+import logoMobile from "../Images/logoMobile.png";
 import { useAuth } from "../../Context/useAuth";
 
 const Header = (props: {
@@ -59,8 +59,8 @@ const Header = (props: {
           </button>
           {/* <!-- Hamburger Toggle BTN --> */}
 
-          <Link className="block flex-shrink-0 lg:hidden w-40" to="/">
-            <img src={logo} alt="Logo" />
+          <Link className="block flex-shrink-0 lg:hidden w-15" to="/">
+            <img src={logoMobile} alt="Logo" />
           </Link>
         </div>
 

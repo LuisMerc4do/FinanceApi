@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import UserOne from "../Images/user-01.jpg";
 import ClickOutside from "./ClickOutside";
+import { useAuth } from "../../Context/useAuth";
 
 const DropdownUser = () => {
+  const { logout } = useAuth();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   return (
@@ -137,7 +139,7 @@ const DropdownUser = () => {
                 fill=""
               />
             </svg>
-            Log Out
+            <a onClick={logout}> Log Out</a>
           </button>
         </div>
       )}

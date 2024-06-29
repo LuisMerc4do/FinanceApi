@@ -225,7 +225,7 @@ const ChartOne: React.FC = () => {
       <div>
         <div
           id="chartOne"
-          className="col-span-1  dark:border-strokedark dark:text-white dark:bg-white sm:px-2.5 xl:col-span-7"
+          className="col-span-1  dark:border-strokedark dark:text-white dark:bg-white sm:px-2.5 xl:col-span-7 mb-6"
         >
           <ReactApexChart
             options={options}

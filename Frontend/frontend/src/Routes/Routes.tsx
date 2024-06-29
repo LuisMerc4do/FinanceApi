@@ -11,6 +11,7 @@ import CashflowStatement from "../Components/CashflowStatements/CashflowStatemen
 import LoginPage from "../Pages/LoginPage/LoginPage";
 import SignupPage from "../Pages/SignupPage/SignupPage";
 import ProtectedRoute from "./ProtectedRoute";
+import FeaturesPage from "../Pages/FeaturesPage";
 
 export const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ export const router = createBrowserRouter([
       {
         path: "signup",
         element: <SignupPage />,
+      },
+      {
+        path: "features",
+        element: <FeaturesPage />,
       },
       {
         path: "search",

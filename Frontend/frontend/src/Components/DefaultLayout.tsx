@@ -12,7 +12,7 @@ const DefaultLayout: React.FC<{ children: ReactNode }> = ({ children }) => {
   const showCompanySidebar = pathname.includes("/company");
 
   return (
-    <div className="dark:bg-boxdark-2 dark:text-bodydark">
+    <div className=" bg-slate-100 dark:bg-boxdark-2 dark:text-bodydark">
       {/* <!-- ===== Page Wrapper Start ===== --> */}
       <div className="flex h-screen overflow-hidden">
         {/* <!-- ===== Sidebar Start ===== --> */}

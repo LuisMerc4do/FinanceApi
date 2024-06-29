@@ -1,14 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import DarkModeSwitcher from "./DarkModeSwitcher";
 import DropdownNotification from "./DropDownNotification";
 import DropdownMessage from "./DropDownMessage";
 import DropdownUser from "./DropDownUser";
 import logo from "../Images/logo.png";
+import { useAuth } from "../../Context/useAuth";
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
   setSidebarOpen: (arg0: boolean) => void;
 }) => {
+  const location = useLocation();
+  const { isLoggedIn } = useAuth();
   return (
     <header className="sticky top-0 z-999 flex w-full bg-white drop-shadow-1 dark:bg-boxdark dark:drop-shadow-none">
       <div className="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
@@ -56,7 +59,7 @@ const Header = (props: {
           </button>
           {/* <!-- Hamburger Toggle BTN --> */}
 
-          <Link className="block flex-shrink-0 lg:hidden" to="/">
+          <Link className="block flex-shrink-0 lg:hidden w-40" to="/">
             <img src={logo} alt="Logo" />
           </Link>
         </div>
@@ -96,26 +99,35 @@ const Header = (props: {
             </div>
           </form>
         </div>
+        {isLoggedIn() ? (
+          <div className="flex items-center gap-3 2xsm:gap-7">
+            <ul className="flex items-center gap-2 2xsm:gap-4">
+              {/* <!-- Dark Mode Toggler --> */}
+              <DarkModeSwitcher />
+              {/* <!-- Dark Mode Toggler --> */}
 
-        <div className="flex items-center gap-3 2xsm:gap-7">
-          <ul className="flex items-center gap-2 2xsm:gap-4">
-            {/* <!-- Dark Mode Toggler --> */}
-            <DarkModeSwitcher />
-            {/* <!-- Dark Mode Toggler --> */}
+              {/* <!-- Notification Menu Area --> */}
+              <DropdownNotification />
+              {/* <!-- Notification Menu Area --> */}
 
-            {/* <!-- Notification Menu Area --> */}
-            <DropdownNotification />
-            {/* <!-- Notification Menu Area --> */}
+              {/* <!-- Chat Notification Area --> */}
+              <DropdownMessage />
+              {/* <!-- Chat Notification Area --> */}
+            </ul>
 
-            {/* <!-- Chat Notification Area --> */}
-            <DropdownMessage />
-            {/* <!-- Chat Notification Area --> */}
-          </ul>
-
-          {/* <!-- User Area --> */}
-          <DropdownUser />
-          {/* <!-- User Area --> */}
-        </div>
+            {/* <!-- User Area --> */}
+            <DropdownUser />
+            {/* <!-- User Area --> */}
+          </div>
+        ) : (
+          <Link to="/signup">
+            <input
+              type="submit"
+              value="Sign Up"
+              className="w-30 cursor-pointer  border border-primary bg-primary p-4 text-white transition hover:bg-opacity-90"
+            />
+          </Link>
+        )}
       </div>
     </header>
   );

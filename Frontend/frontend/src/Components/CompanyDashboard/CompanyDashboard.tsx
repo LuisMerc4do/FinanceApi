@@ -12,7 +12,7 @@ const CompanyDashboard = ({ children, ticker }: Props) => {
       <div>
         <div>{children}</div>
 
-        <div className="bg-white  rounded-sm border border-stroke dark:border-strokedark mb-4">
+        <div className="bg-white  rounded-sm border border-stroke dark:bg-black dark:border-strokedark mb-4">
           {<Outlet context={ticker} />}
         </div>
       </div>

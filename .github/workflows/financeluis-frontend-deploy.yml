@@ -3,14 +3,14 @@ name: Deploy FinanceLuis Frontend to Azure
 on:
   push:
     branches:
-      - main
+      - master
     paths:
-      - 'frontend/**'
+      - 'Frontend/**'
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: financeluis-frontend
-  NODE_VERSION: '18.x'
+  AZURE_WEBAPP_NAME: financeluisfrontend    # Replace with your actual Azure Web App name
+  NODE_VERSION: '18.x'                      # Adjust if you're using a different Node.js version
 
 jobs:
   build-and-deploy:
@@ -23,15 +23,16 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
 
-    - name: npm install and build
+    - name: npm install, build, and test
       run: |
+        cd Frontend
         npm install
         npm run build
-      working-directory: ./frontend
-
+        npm run test --if-present
+      
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_FRONTEND }}
-        package: ./frontend/build
+        package: Frontend/build

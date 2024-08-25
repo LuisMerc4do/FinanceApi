@@ -9,8 +9,8 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: financeluisfrontend
-  NODE_VERSION: '18.x'
+  AZURE_WEBAPP_NAME: financeluisfrontend    # Replace with your actual Azure Web App name
+  NODE_VERSION: '18.x'                      # Adjust if you're using a different Node.js version
 
 jobs:
   build-and-deploy:
@@ -27,7 +27,7 @@ jobs:
       run: |
         cd Frontend/frontend
         npm install
-        npm install --save-dev @babel/plugin-proposal-private-property-in-object
+        npm install --save-dev @babel/plugin-proposal-private-property-in-object babel-jest @babel/preset-env @babel/preset-react
 
     - name: Build
       run: |
@@ -37,7 +37,7 @@ jobs:
     - name: Run tests
       run: |
         cd Frontend/frontend
-        CI=true npm test -- --passWithNoTests
+        CI=true npm test -- --config=jest.config.js --passWithNoTests
 
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2

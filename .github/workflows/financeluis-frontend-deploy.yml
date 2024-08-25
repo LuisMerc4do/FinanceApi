@@ -23,14 +23,17 @@ jobs:
       with:
         node-version: ${{ env.NODE_VERSION }}
 
-    - name: npm install, build, and test
+    - name: Install dependencies and build
       run: |
         cd Frontend/frontend
         npm install
+        npm install --save-dev @babel/plugin-proposal-private-property-in-object
         CI=false npm run build
-        npm run test --if-present
-      env:
-        CI: false
+
+    - name: Run tests
+      run: |
+        cd Frontend/frontend
+        npm test -- --passWithNoTests
 
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2

@@ -27,7 +27,7 @@ jobs:
       run: |
         cd Frontend
         npm install
-        npm run build
+        npm run
         npm run test --if-present
       
     - name: 'Deploy to Azure WebApp'

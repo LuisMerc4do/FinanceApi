@@ -1,6 +1,8 @@
 # FinanceApp
 
-A modern, responsive finance application that allows users to search stocks using https://site.financialmodelingprep.com/ API, storing the stock viewed in the API inside the database when added to portfolio or comment, view stock information directly from the API, company profile, post comments, dynamically create new stocks, user creation, login, Authorization.
+A modern, responsive finance application that allows users to search stocks using https://site.financialmodelingprep.com/ API, storing the stock viewed in the API inside the database when added to portfolio or comment, view stock information directly from the API, company profile, post comments, dynamically create new stocks, user creation, login, Authorization. 
+
+# https://financeluisfrontend.azurewebsites.net/
 
 ## Overview
 
@@ -19,6 +21,7 @@ The Finance App is designed to provide users with a comprehensive platform for m
 - Entity Framework usage
 - Token usage
 - Middleframeworks
+- Unit testing
 
 ## Technologies Used
 
@@ -28,6 +31,7 @@ The Finance App is designed to provide users with a comprehensive platform for m
 - Authentication: Identity Framework, JWT Tokens
 - Frontend: Tailwind CSS, React.js, Typescript
 - GitHub Actions (for CI/CD)
+- Azure Web apps for deployment
 
 ## Acknowledgments
 

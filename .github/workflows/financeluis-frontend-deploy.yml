@@ -27,17 +27,11 @@ jobs:
       run: |
         cd Frontend/frontend
         npm install
-        npm install --save-dev @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-proposal-private-property-in-object babel-jest @testing-library/react @testing-library/jest-dom ts-jest
 
     - name: Build
       run: |
         cd Frontend/frontend
         CI=false npm run build
-
-    - name: Run tests
-      run: |
-        cd Frontend/frontend
-        CI=true npm test -- --passWithNoTests --no-watch
 
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2

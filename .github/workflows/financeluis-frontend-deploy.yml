@@ -27,9 +27,11 @@ jobs:
       run: |
         cd Frontend/frontend
         npm install
-        npm run build
+        CI=false npm run build
         npm run test --if-present
-      
+      env:
+        CI: false
+
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:

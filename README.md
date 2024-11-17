@@ -1,52 +1,99 @@
-# FinanceApp
+# 💹 FinanceApp
 
-A modern, responsive finance application that allows users to search stocks using https://site.financialmodelingprep.com/ API, storing the stock viewed in the API inside the database when added to portfolio or comment, view stock information directly from the API, company profile, post comments, dynamically create new stocks, user creation, login, Authorization. 
+A modern, responsive finance application that allows users to search stocks using the [Financial Modeling Prep API](https://site.financialmodelingprep.com/). Users can view stock information, add stocks to their portfolio, post comments, and dynamically create new stocks. The app supports user creation, login, and role-based authorization, storing viewed stocks in the database when added to the portfolio or commented on.
 
-# https://financeluisfrontend.azurewebsites.net/
+🔗 **Live Demo**: [FinanceApp Frontend](https://financeluisfrontend.azurewebsites.net/)
 
 ## Overview
 
-The Finance App is designed to provide users with a comprehensive platform for managing and discussing stock information. Users can view stock details, post comments, and dynamically create new stocks if they don't already exist in the system.
+The Finance App is designed to provide users with a comprehensive platform for managing and discussing stock information. Users can access detailed stock data, interact through comments, and manage their portfolios efficiently.
 
 ## Features
 
-- View stock information
-- Post and view comments on stocks
-- Dynamic stock creation via finance API
-- User authentication and authorization
-- Identity Framework user creation and login
-- Create portfolios
-- storing the stock viewed in the API inside the database when added to portfolio or comment
-- Relational databases
-- Entity Framework usage
-- Token usage
-- Middleframeworks
-- Unit testing
+- **View Detailed Stock Information**: Real-time stock data fetched from Financial Modeling Prep API.
+- **Post and View Comments**: Engage with other users by commenting on individual stocks.
+- **Dynamic Stock Creation**: Add new stocks dynamically if they don't already exist in the system.
+- **User Authentication & Authorization**: Secure login using Identity Framework and JWT Tokens.
+- **Portfolio Management**: Create and manage personal stock portfolios.
+- **Persistent Data Storage**: Stocks viewed from the API are stored in a relational database when added to a portfolio or commented on.
+- **Unit Testing**: Includes comprehensive unit tests for key features to ensure code reliability.
 
 ## Technologies Used
 
-- API: Financial Modeling Prep API
-- Backend: ASP.NET Core, Entity Framework
-- Database: Microsoft SQL Server
-- Authentication: Identity Framework, JWT Tokens
-- Frontend: Tailwind CSS, React.js, Typescript
-- GitHub Actions (for CI/CD)
-- Azure Web apps for deployment
+- **API**: Financial Modeling Prep API
+- **Backend**: ASP.NET Core, Entity Framework
+- **Database**: Microsoft SQL Server
+- **Authentication**: Identity Framework, JWT Tokens
+- **Frontend**: React.js, TypeScript, Tailwind CSS
+- **CI/CD**: GitHub Actions
+- **Deployment**: Azure Web Apps
 
-## Acknowledgments
+## 🚀 Getting Started
 
-Financial Modeling Prep for providing the API.
+### Prerequisites
 
-NEW DESIGN
-![Dashboard Page](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/3a72be63-5443-4f90-92c8-b0ba7d241a20)
-![Features page](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/eb13202a-6e86-4994-9d0a-11aeb10a3592)
-![Login Page](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/61baa19f-e09c-4b1c-b09f-1a1a04e3b9dc)
-![CompanyProfile Dark](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/2ca308f2-b30f-4f72-86f0-a318a2b69fd1)
-![Comments Section](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/7df37b23-872a-4136-a5ae-6cf3759ca7dc)
+Make sure you have the following installed:
 
-OLD DESIGN
+- [.NET SDK](https://dotnet.microsoft.com/download) (6.0 or higher)
+- [Node.js](https://nodejs.org/en/download/) (for the frontend)
+- [SQL Server](https://www.microsoft.com/en-us/sql-server/sql-server-downloads)
+- [Git](https://git-scm.com/)
+- [Azure Account](https://azure.microsoft.com/en-us/free/) (for deployment)
 
-![Captura de pantalla 2024-06-25 202020](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/2a2980bb-f560-4f3c-a377-2289c23795ed)
-![Captura de pantalla 2024-06-25 202345](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/c5867fff-28a3-4139-a5d1-d8be23bad620)
-![Captura de pantalla 2024-06-25 202315](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/d006b55b-c30c-4978-855b-25811298dfdf)
-![Captura de pantalla 2024-06-25 202400](https://github.com/LuisMerc4do/FinanceApi/assets/163725779/1f3427b9-8e81-4097-9d17-21765751422c)
+### Clone the Repository
+
+To clone the project, run the following command:
+
+```
+git clone https://github.com/your-username/FinanceApp.git
+cd FinanceApp
+```
+```
+Backend Setup
+Navigate to the backend directory:
+```
+```
+cd FinanceApp/Backend
+Install the required .NET dependencies:
+```
+```
+dotnet restore
+Configure the database connection string in appsettings.json:
+```
+```
+"ConnectionStrings": {
+    "DefaultConnection": "Your SQL Server connection string here"
+}
+```
+Run the database migrations to set up the database schema:
+
+```
+dotnet ef database update
+Start the backend server:
+```
+```
+dotnet run
+```
+
+# 🚢 Deployment
+Deploying to Azure
+Backend Deployment:
+
+Set up an Azure Web App for the backend.
+Use GitHub Actions to automate deployment by configuring your repository secrets with Azure credentials.
+Update the appsettings.Production.json with the correct database connection string and API keys.
+Frontend Deployment:
+
+Set up a second Azure Web App or Static Web App for the frontend.
+Configure the deployment settings to point to the Frontend folder.
+Update environment variables if needed to connect to the production backend API.
+GitHub Actions:
+
+Set up workflows in .github/workflows to automate CI/CD for both backend and frontend.
+Ensure secrets like API keys and database connection strings are securely stored in GitHub Secrets.
+
+# Acknowledgments
+Financial Modeling Prep: For providing the stock data API.
+ASP.NET Core Documentation: For guiding the backend setup and best practices.
+Tailwind CSS: For helping design a modern and responsive frontend.
+GitHub Actions & Azure Web Apps: For streamlining the CI/CD process and deployment.
